@@ -1,0 +1,9 @@
+greeter_test = executable('greeter_test', 'greeter.c',
+                          include_directories: greeter_headers,
+                          c_args: greeter_definitions_external,
+                          cpp_args: greeter_definitions_external,
+                          build_by_default: false,
+                          link_with: greeter_lib,
+                          override_options: ['b_lto=false'])
+
+test('greeter', greeter_test)

@@ -106,6 +106,6 @@ AllowShortCaseLabelsOnASingleLine: true
 AlwaysBreakBeforeMultilineStrings: false
 BreakConstructorInitializers: AfterColon
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
-KeepEmptyLinesAtTheStartOfBlocks: false
+KeepEmptyLinesAtTheStartOfBlocks: true
 BreakStringLiterals: true
 MaxEmptyLinesToKeep: 1

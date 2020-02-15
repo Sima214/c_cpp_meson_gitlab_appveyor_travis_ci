@@ -9,13 +9,13 @@
  * Greeter interface for C.
  *
  * @param who Who to greet.
- * @return Greetings.
+ * @return dynamically allocated Greetings.
  */
-__attribute__((visibility("default"))) const char* get_greet(const char* who);
+GREETER_EXPORT char* get_greet(const char* who);
 
 /**
- * Returns a hello world string.
+ * Returns a dynamically allocated hello world string.
  */
-__attribute__((visibility("default"))) const char* get_hello_world();
+GREETER_EXPORT char* get_hello_world();
 
 #endif /*TEMPLATE_GREETER*/
