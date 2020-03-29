@@ -16,10 +16,9 @@ build_script:
   - cmd: meson setup build
   - cmd: cd build
   - cmd: ninja
-
-test:
-  - cmd: cd build
   - cmd: ninja test
+
+test: off
 
 # Uncomment to enable rdp.
 # on_finish:
