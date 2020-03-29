@@ -13,7 +13,7 @@ build_script:
   - cmd: set CC=clang-cl
   - cmd: set CXX=clang-cl
   - cmd: mkdir build
-  - cmd: meson setup --buildtype release build
+  - cmd: meson setup --buildtype release --optimization 3 build
   - cmd: cd build
   - cmd: ninja
   - cmd: ninja test
