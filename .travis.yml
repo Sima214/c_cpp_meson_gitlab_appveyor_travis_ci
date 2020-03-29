@@ -1,0 +1,28 @@
+language: cpp
+
+os:
+  - osx
+
+compiler:
+  - clang
+
+addons:
+  homebrew:
+    packages:
+    - python3
+    - meson
+
+branches:
+  except:
+    - windows
+    - linux
+
+before_script:
+  - git submodule update --init --recursive
+  - mkdir build
+  - meson setup build
+
+script:
+  - cd build
+  - ninja
+  - ninja test

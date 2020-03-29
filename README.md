@@ -1,9 +1,5 @@
-# C/C++ Meson gitlabci/azure/travis CI
+# C/C++ Meson build system with GitlabCI/AppVeyor/Travis CI
 
-C/C++ library template using the meson build system, with unit tests, and CI example configurations.
+C/C++ library template using the meson build system, with tests, and CI example configurations.
 
-## Continuous Integration Configuration
-
-- Linux: gitlabci both gcc and clang.
-- Windows: docker image running on azure pipeline using ninja+clang(not the Visual Studio version).
-- MacOS: travis with xcode clang.
+This is used as a build system template for all my other C/C++ projects.
