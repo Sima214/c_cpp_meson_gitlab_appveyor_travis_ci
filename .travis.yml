@@ -3,6 +3,8 @@ language: cpp
 os:
   - osx
 
+osx_image: xcode11.3
+
 compiler:
   - clang
 
@@ -17,9 +19,9 @@ before_script:
   - python3 -m pip install meson
   - git submodule update --init --recursive
   - mkdir build
-  - python3 -m mesonbuild setup build
 
 script:
+  - meson setup build
   - cd build
   - ninja
   - ninja test
