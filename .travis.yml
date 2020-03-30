@@ -6,18 +6,14 @@ os:
 compiler:
   - clang
 
-addons:
-  homebrew:
-    packages:
-    - python3
-    - meson
-
 branches:
   except:
     - windows
     - linux
 
 before_script:
+  - brew update
+  - brew install git python3 ninja meson
   - git submodule update --init --recursive
   - mkdir build
   - meson setup build
