@@ -13,7 +13,7 @@ branches:
 
 before_script:
   - brew update
-  - brew install git python3 ninja meson
+  - brew install ninja meson
   - git submodule update --init --recursive
   - mkdir build
   - meson setup build
