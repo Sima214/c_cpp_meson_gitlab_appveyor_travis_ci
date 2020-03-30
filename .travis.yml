@@ -17,7 +17,7 @@ before_script:
   - python3 -m pip install meson
   - git submodule update --init --recursive
   - mkdir build
-  - python3 -m meson setup build
+  - python3 -m mesonbuild setup build
 
 script:
   - cd build
