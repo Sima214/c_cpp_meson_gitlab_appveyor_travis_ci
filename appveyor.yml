@@ -1,12 +1,11 @@
 shallow_clone: true
 
 platform:
-  # - x86
   - x64
 
 configuration:
-  # - Debug
-  - Release
+  - Debug
+  # - Release (TODO: b_vscrt)
 
 image:
   - Visual Studio 2019
@@ -24,10 +23,9 @@ build_script:
   - cmd: set CC=clang-cl
   - cmd: set CXX=clang-cl
   - cmd: mkdir build
-  - cmd: meson setup --buildtype release --optimization 3 build
-  - cmd: cd build
-  - cmd: ninja
-  - cmd: ninja test
+  - cmd: meson setup build
+  - cmd: ninja -C build
+  - cmd: ninja -C build test
 
 test: off
 

@@ -166,7 +166,7 @@ Temporary Items
 .ninja_deps
 .ninja_log
 
-build*
+build/
 
 ## IDEs
 

@@ -20,15 +20,17 @@ char* get_greet(const char* who) {
   std::string      whopp     = std::string(who);
   example::Greeter greeter   = example::Greeter(whopp);
   std::string      greetings = greeter.getGreetings();
-  char*            ret       = (char*) malloc(greetings.length() + 1);
-  strcpy(ret, greetings.c_str());
+  std::size_t      ret_len   = greetings.length() + 1;
+  char*            ret       = (char*) malloc(ret_len);
+  strncpy(ret, greetings.c_str(), ret_len);
   return ret;
 }
 
 char* get_hello_world() {
   example::Greeter greeter;
   std::string      greetings = greeter.getGreetings();
-  char*            ret       = (char*) malloc(greetings.length() + 1);
-  strcpy(ret, greetings.c_str());
+  std::size_t      ret_len   = greetings.length() + 1;
+  char*            ret       = (char*) malloc(ret_len);
+  strncpy(ret, greetings.c_str(), ret_len);
   return ret;
 }
