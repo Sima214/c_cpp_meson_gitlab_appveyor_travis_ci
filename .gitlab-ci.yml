@@ -18,8 +18,8 @@ clang:
   script:
     - mkdir build
     - meson setup build
-    - ninja -C build
-    - ninja -C build test
+    - ninja -v -C build
+    - ninja -v -C build test
 
 
 gcc:
@@ -39,5 +39,5 @@ gcc:
   script:
     - mkdir build
     - meson setup build
-    - ninja -C build
-    - ninja -C build test
+    - ninja -v -C build
+    - ninja -v -C build test

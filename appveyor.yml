@@ -24,8 +24,8 @@ build_script:
   - cmd: set CXX=clang-cl
   - cmd: mkdir build
   - cmd: meson setup build
-  - cmd: ninja -C build
-  - cmd: ninja -C build test
+  - cmd: ninja -v -C build
+  - cmd: ninja -v -C build test
 
 test: off
 

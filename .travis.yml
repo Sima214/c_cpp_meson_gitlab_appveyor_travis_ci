@@ -22,5 +22,5 @@ before_script:
 
 script:
   - meson setup build
-  - ninja -C build
-  - ninja -C build test
+  - ninja -v -C build
+  - ninja -v -C build test
