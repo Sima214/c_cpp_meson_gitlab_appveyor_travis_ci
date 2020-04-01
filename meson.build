@@ -17,10 +17,13 @@ subdir('build-aux')
 
 # Common compiler options.
 common_args = []
+common_args_checked = []
 common_defs = []
 
 # Always use UTF-8 encoding.
-common_args += '-fexec-charset=UTF-8'
+foreach c : compilers
+    common_args_checked += c.first_supported_argument('-fexec-charset=UTF-8', '/utf-8')
+endforeach
 
 # Operating system options.
 if os_name == 'windows'
@@ -40,6 +43,8 @@ foreach arg : common_args
     endforeach
 endforeach
 
+common_args += common_args_checked
+
 # Build library.
 subdir('src')
 
@@ -47,3 +52,5 @@ subdir('src')
 subdir('test')
 
 # Packager.
+target_ci_artifact_package = run_target('ci_package', command: ['echo', greeter_lib])
+target_ci_artifact_upload = run_target('ci_upload', command: [python])
