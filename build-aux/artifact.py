@@ -68,7 +68,7 @@ if options.ftp_server is not None:
     try_count = 1
     while not ftp_success and try_count <= FTP_RETRIES:
         ftp = ftplib.FTP_TLS(context=ssl.create_default_context())
-        ftp.set_debuglevel(1)
+        # ftp.set_debuglevel(1)
         try:
             ftp.connect(options.ftp_server)
             if options.ftp_username is not None:
@@ -97,7 +97,8 @@ if options.ftp_server is not None:
             ftp.quit()
         except ftplib.all_errors as e:
             print(e, flush=True)
-        timeout = random.randint(FTP_RETRIES_TIMEOUT_MIN, FTP_RETRIES_TIMEOUT_MAX)
-        print("Waiting %d seconds.\nRetry count: %d" % (timeout, try_count), flush=True)
-        try_count += 1
-        time.sleep(timeout)
+        if not ftp_success:
+            timeout = random.randint(FTP_RETRIES_TIMEOUT_MIN, FTP_RETRIES_TIMEOUT_MAX)
+            print("Waiting %d seconds.\nRetry count: %d" % (timeout, try_count), flush=True)
+            try_count += 1
+            time.sleep(timeout)
