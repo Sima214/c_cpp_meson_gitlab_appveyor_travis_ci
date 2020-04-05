@@ -15,6 +15,10 @@ branches:
     - linux
     - macos
 
+environment:
+  CI_FTP_SECRET:
+    secure: 1npkW+fDfvILUzeZeY2XTFsblS9hxDjOeqyISCIXzD8=
+
 install:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
   - cmd: git submodule update --init --recursive
@@ -23,9 +27,10 @@ build_script:
   - cmd: set CC=clang-cl
   - cmd: set CXX=clang-cl
   - cmd: mkdir build
-  - cmd: meson setup build
+  - cmd: meson setup build "-Dbuild_tag=%APPVEYOR_BUILD_NUMBER%"
   - cmd: ninja -v -C build
-  - cmd: ninja -v -C build test
+  - cmd: ninja -C build test
+  - cmd: ninja -C build ci_upload 
 
 test: off
 

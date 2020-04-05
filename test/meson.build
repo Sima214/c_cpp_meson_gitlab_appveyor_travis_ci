@@ -1,3 +1,5 @@
+tests_logfile = meson.build_root() + '/meson-logs/testlog.json'
+
 greeter_test = executable('greeter_test', 'greeter.c',
                           include_directories: greeter_headers,
                           c_args: common_args + common_defs + greeter_definitions_external,

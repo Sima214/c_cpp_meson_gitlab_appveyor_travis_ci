@@ -1,4 +1,4 @@
-project('example', ['c', 'cpp'], version: '0.1',
+project('c_cpp_meson_gitlab_appveyor_travis_ci', ['c', 'cpp'], version: '0.1',
         default_options: [
             # Standard version to compile against.
             'c_std=c99', 'cpp_std=c++11',
@@ -52,5 +52,6 @@ subdir('src')
 subdir('test')
 
 # Packager.
-target_ci_artifact_package = run_target('ci_package', command: ['echo', greeter_lib])
-target_ci_artifact_upload = run_target('ci_upload', command: [python])
+packaged_files = [greeter_lib, greeter_test, tests_logfile]
+target_ci_artifact_package = run_target('ci_package', command: artifact_ci_common + artifact_ci_output + packaged_files)
+target_ci_artifact_upload = run_target('ci_upload', command: artifact_ci_common + artifact_ci_ftp + packaged_files)

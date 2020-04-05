@@ -13,6 +13,10 @@ branches:
     - windows
     - linux
 
+env:
+  global:
+    secure: "SFVgPPPL/tXyemBOaNsKwp0oqbWKBG+ekYMP5aoJgFSlHUGuXEoRa+sqUS944Rwyg9IKZGv2JpZAesBXy7sIBGxwlaFpBjDotZubU57Y0Ah/NBXrmXNRAdjqq7Z/hWX9TfBl4BUeHVXAhgAPyjzK351WZbBF+J36cS2Pp//qIVUhqwzG5qT/otxa86ov8p4ViEKJJwtke9DmNFKhZNQKqIjnet3uRW6dwlGJpNkyP6hcq/HDdlCYwuskf3GO9zveLmX40NBrrRq5yJeH46Evan9/mixzZIfgiehVfWiuixLiwjBFn43x7OotanBghUUcJwAiOPqq64zffv/juq+huPJqrcCDjT6Gd7yKgcaXd5EKcVeraKQnsArkZLBjSXMtD3bm12ABj85xH9slBJk3AhaasBAFAJBYJ+ju6WIzhZUCRPFBteZFnlGYSvV+hDuDvOvBXip4WQkJZ0X6OcQzmVDn8S3I6IyfNdQpkk9BSS+ozi7wVGYgilqtR+tZkE00jZhWG6yQucQYioixYl1IhHTMvqcmPuCMWIu57lvJnWxBrk0B58YM8awsYVu5GO94SAzIYp+zMzdnN+gIE9PXzCMkvDxCLKNyY4z1FTXQv8h/5J1ic+ILEFASMbh5nGH1URZqDXZc876SH5cvTnkRWqPQk2Zkm9TbRhA960phW/s="
+
 before_script:
   - brew update
   - brew install ninja
@@ -21,6 +25,7 @@ before_script:
   - mkdir build
 
 script:
-  - meson setup build
+  - meson setup build "-Dbuild_tag=$TRAVIS_JOB_NUMBER"
   - ninja -v -C build
-  - ninja -v -C build test
+  - ninja -C build test
+  - ninja -C build ci_upload 
